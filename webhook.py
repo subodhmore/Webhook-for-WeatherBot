@@ -23,16 +23,16 @@ def webhook():
     return r
 
 def makeResponse(req):
-    if req.get("result").get("action") != "fetchWeatherForecast":
-        return {}
-   """ result = req.get("result")
+    #if req.get("result").get("action") != "fetchWeatherForecast":
+    #   return {}
+    result = req.get("result")
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
     date = parameters.get("date")
     if city is None:
         return None
     r=requests.get('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=b51422adcff9620e57ee50e8d8326233')
-    json_object = r.json()
+   """ json_object = r.json()
     weather=json_object['list']
     for i in range(0,30):
         if date in weather[i]['dt_txt']:
