@@ -1,5 +1,6 @@
 import json
 import os
+import requests
 
 from flask import Flask
 from flask import request
@@ -9,10 +10,10 @@ from flask import make_response
 
 app = Flask(__name__)
 
-@app.route('/webhook', method=['POST'])
+@app.route('/webhook', methods=['POST'])
 def webhook():
 	req= request.get_json(silent=True,force=True)
-	print(json.dumps(req,indent=4))
+	print(json.dumps(req, indent=4))
 
 	res=makeResponse(req)
 	res=json.dumps(res, indent=4)
@@ -26,7 +27,7 @@ def makeResponse(req):
 	city = parameters.get("geo-city")
 	date = parameters.get("date")
 	
-	r=request.get(http://api.openweathermap.org/data/2.5/forecast?q=+city+,us&appid=b51422adcff9620e57ee50e8d8326233)
+	r=request.get(http://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=b51422adcff9620e57ee50e8d8326233)
 	
 	json_object= r.json()
 	weather = json_object['list']
@@ -35,9 +36,9 @@ def makeResponse(req):
 			condition = weather[i]['weather'][0]['description']
 			break
 	speech = "The forecats for " +city+ "for "+date" is " +condition
-	return{
-	"speech":speech
-	"displayText":speech
+	return {
+	"speech":speech,
+	"displayText":speech,
 	"source":"apiai-weather-webhook"
 	}
 
