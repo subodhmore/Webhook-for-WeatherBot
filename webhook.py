@@ -25,7 +25,7 @@ def webhook():
 def makeResponse(req):
     if req.get("result").get("action") != "fetchWeatherForecast":
         return {}
-    result = req.get("result")
+   """ result = req.get("result")
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
     date = parameters.get("date")
@@ -37,8 +37,8 @@ def makeResponse(req):
     for i in range(0,30):
         if date in weather[i]['dt_txt']:
             condition= weather[i]['weather'][0]['description']
-            break
-    speech = "The forecast for"+city+ "for "+date+" is "+condition
+            break """
+    speech = "The forecast for Mumbai for 2021-05-02 is Smokey"
     return {
     "speech": speech,
     "displayText": speech,
