@@ -32,12 +32,12 @@ def makeResponse(req):
     if city is None:
         return None
     r=requests.get('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=b51422adcff9620e57ee50e8d8326233')
-   """ json_object = r.json()
+    json_object = r.json()
     weather=json_object['list']
     for i in range(0,30):
         if date in weather[i]['dt_txt']:
             condition= weather[i]['weather'][0]['description']
-            break """
+            break 
     speech = "The forecast for Mumbai for 2021-05-02 is Smokey"
     return {
     "speech": speech,
